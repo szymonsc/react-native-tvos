@@ -7,6 +7,7 @@
 
 package com.facebook.react.views.scroll;
 
+import android.util.Log;
 import android.content.Context;
 import android.widget.HorizontalScrollView;
 import androidx.core.view.ViewCompat;
@@ -49,6 +50,7 @@ public class ReactHorizontalScrollContainerView extends ReactViewGroup {
 
   @Override
   protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+    Log.e("@@@@", "@@@@@@ onlayout");
     // This is to fix the overflowing (scaled) item being cropped
     final HorizontalScrollView parent = (HorizontalScrollView) getParent();
     parent.setClipChildren(false);
@@ -57,6 +59,7 @@ public class ReactHorizontalScrollContainerView extends ReactViewGroup {
     if (mLayoutDirection == LAYOUT_DIRECTION_RTL) {
       // When the layout direction is RTL, we expect Yoga to give us a layout
       // that extends off the screen to the left so we re-center it with left=0
+      int newLeftX = 0;
       int newLeft = 0;
       int width = right - left;
       int newRight = newLeft + width;
